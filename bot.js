@@ -13,6 +13,15 @@ const bot = new Telegraf(BOT_TOKEN);
 const lastPrediction = {};
 const COOLDOWN = 12 * 60 * 60 * 1000;
 
+const express = require("express");
+const app = express();
+
+
+app.get("/", (req, res) => res.send("Bot is running!"));
+
+const PORT = process.env.PORT || 10000;
+app.listen(PORT, () => console.log(`Server is listening on port ${PORT}`));
+
 
 function sendQuote() {
   const quote = quotes[Math.floor(Math.random() * quotes.length)];
